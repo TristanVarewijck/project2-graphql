@@ -1,37 +1,30 @@
-function cleanData(response) {
-  let data = response.data.articles;
-  const cleanedData = data.map((item, index) => {
-    return {
-      title: item.title,
-      img: imgInput(item.urlToImage),
-      id: `${index}`,
-      publishedAt: parseDate(item.publishedAt),
-      author: item.author,
-      content: item.content,
-    };
+const launchesSection = document.getElementById("launchSection");
+
+const cleanData = (data, index) => {
+  let items = data.data.launches;
+
+  items.map((item) => {
+    const launchesContents = `
+      <div>
+      <h1>${item.launch_success}</h1>
+      </div>   
+      
+`;
+    const launchContainer = document.createElement("li");
+    launchContainer.className = `launch + ${index}`;
+    launchContainer.innerHTML = launchesContents;
+    launchesSection.appendChild(launchContainer);
   });
 
-  module.exports = { cleanedData };
-  return cleanedData;
-}
-
-// DECIDE IMAGE
-function imgInput(urlToImage) {
-  if (urlToImage) {
-    let image = urlToImage;
-    return image;
-  } else {
-    let image = "../assets/icons/no-image.svg";
-    return image;
-  }
-}
+  return items;
+};
 
 // PARSE PUBLISH DATE
-function parseDate(publishedAt) {
-  publishedAt = new Date(publishedAt);
-  publishedAt = publishedAt.toString().substring(3, 25);
-  publishedAt = publishedAt.slice(12, 16) + publishedAt.slice(16);
-  return publishedAt;
-}
+// function parseDate(publishedAt) {
+//   publishedAt = new Date(publishedAt);
+//   publishedAt = publishedAt.toString().substring(3, 25);
+//   publishedAt = publishedAt.slice(12, 16) + publishedAt.slice(16);
+//   return publishedAt;
+// }
 
-module.exports = { cleanData };
+export { cleanData };

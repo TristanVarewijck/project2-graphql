@@ -1,3 +1,5 @@
+import { cleanData } from "./cleaning.js";
+
 const fetchData = () =>
   fetch("https://api.spacex.land/graphql/", {
     method: "POST",
@@ -21,8 +23,6 @@ const fetchData = () =>
     }),
   })
     .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-    });
+    .then(cleanData);
 
 export { fetchData };
