@@ -19,10 +19,85 @@
 }
 
 :root {
-    --fontStyle: "regular";
-    --font: "DIN-";
+    /* font */
+    --fontRegular: "DIN-regular";
+    --fontLight: "DIN-light";
+    --fontMedium: "DIN-medium";
+    --fontBold: "DIN-bold";
+    /* colors */
+    --dark: #151515;
+    --light: #ffffff;
+    --gray: #cccccc;
 }
 
+/* global styles */
 body {
-    font-family: var(--font, --fontStyle);
+    font-family: var(--fontRegular);
+    background-color: var(--dark);
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h5,
+h6 {
+    margin: 0;
+}
+
+/* styles */
+#pop-up {
+    background-color: var(--light);
+    position: absolute;
+    width: 35%;
+    padding: 2.5em 4.5em 1em 4.5em;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(360deg, #cccccc 0%, #ffffff 57.72%);
+    box-shadow: 0px 12px 10px 4px rgba(0, 0, 0, 0.15), inset 0px -2px 6px 4px rgba(0, 0, 0, 0.2),
+        inset 0px 0px 8px 2px rgba(255, 255, 255, 0.5);
+}
+
+#pop-up ul li {
+    margin-bottom: 6em;
+}
+
+#pop-up ul li small {
+    font-size: 1em;
+    color: var(--gray);
+    font-family: var(--fontRegular);
+}
+
+#pop-up ul li small:last-of-type {
+    text-transform: uppercase;
+    color: var(--dark);
+    font-size: 0.8em;
+}
+
+#pop-up ul li small:last-of-type span {
+    font-family: var(--fontBold);
+}
+
+#pop-up ul li h1 {
+    font-size: 3em;
+    font-family: var(--fontBold);
+    margin: 16px 0em 32px 0em;
+}
+
+#pop-up ul li img {
+    margin-top: 8px;
+    width: 100%;
+    height: auto;
+}
+
+#pop-up ul li p {
+    line-height: 1.6em;
+    font-size: 1em;
 }
