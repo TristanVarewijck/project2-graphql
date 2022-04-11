@@ -13,6 +13,9 @@ const fetchData = () =>
             launch_site {
               site_name
             }
+            links {
+                flickr_images
+              }
             launch_success
             rocket {
               rocket_name
