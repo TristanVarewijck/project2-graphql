@@ -1,28 +1,27 @@
-const launchesSection = document.getElementById("launchSection");
+// const launchesSection = document.getElementById("launchSection");
 
 const cleanData = (data) => {
   let items = data.data.launches;
-  console.log(items);
   items.map((item) => {
     //   CLEANING
     item.launch_date_utc = parseDate(item.launch_date_utc);
     item.links.flickr_images[0] = hasImage(item.links.flickr_images[0]);
     item.details = hasDetails(item.details);
 
-    const launchesContents = `
-      <article>
-      <small>${item.launch_date_utc}</small>
-      <h1>${item.rocket.rocket_name}</h1>
-      <small> Launch site: <span>${item.launch_site.site_name}</span></small>
-      <img src=${item.links.flickr_images[0]} alt=${item.launch_site.site_name} width="150px"/>
-      <p>${item.details}</p>
-      </article>      
-`;
-    const launchContainer = document.createElement("li");
-    launchContainer.innerHTML = launchesContents;
-    launchesSection.appendChild(launchContainer);
+    //     const launchesContents = `
+    //       <article>
+    //       <small>${item.launch_date_utc}</small>
+    //       <h1>${item.rocket.rocket_name}</h1>
+    //       <small> Launch site: <span>${item.launch_site.site_name}</span></small>
+    //       <img src=${item.links.flickr_images[0]} alt=${item.launch_site.site_name} width="150px"/>
+    //       <p>${item.details}</p>
+    //       </article>
+    // `;
+    //     const launchContainer = document.createElement("li");
+    //     launchContainer.innerHTML = launchesContents;
+    //     launchesSection.appendChild(launchContainer);
+    //   });
   });
-
   return items;
 };
 
