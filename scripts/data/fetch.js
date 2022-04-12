@@ -1,7 +1,7 @@
 import { cleanData } from "./cleaning.js";
 
 const fetchData = () =>
-  fetch("https://api.spacex.land/graphql/", {
+  fetch("https://apid.spacex.land/graphql/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
