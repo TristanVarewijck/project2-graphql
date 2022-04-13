@@ -1,15 +1,17 @@
 import { cleanData } from "./cleaning.js";
+import { filterData } from "./filterData.js";
 
 const fetchData = () =>
-  fetch("https://apid.spacex.land/graphql/", {
+  fetch("https://api.spacex.land/graphql/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       query: `
         query {
-          launches {
+          launches(limit: 100){
             details
             launch_date_utc
+            launch_year
             launch_site {
               site_name
             }
@@ -26,6 +28,7 @@ const fetchData = () =>
     }),
   })
     .then((res) => res.json())
-    .then(cleanData);
+    .then(cleanData)
+    .then(filterData);
 
 export { fetchData };
