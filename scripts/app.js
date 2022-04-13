@@ -1,3 +1,6 @@
-import { fetchData } from "./data/fetch.js";
+// import { fetchData } from "./data/fetch.js";
+import { renderMap } from "./Three/render.js"
 
-fetchData();
+renderMap();
+
+// fetchData();
