@@ -1,6 +1,18 @@
-// import { fetchData } from "./data/fetch.js";
-import { renderMap } from "./Three/render.js"
+import {
+    fetchData
+} from "./data/fetch.js";
+import {
+    popUpToggler
+} from "./popUp.js";
+import {
+    renderMap
+} from "./Three/render.js"
 
+// render Three
 renderMap();
 
-// fetchData();
+// data fetching
+fetchData();
+
+// elements
+popUpToggler;

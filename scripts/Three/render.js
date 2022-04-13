@@ -2,7 +2,6 @@ import * as THREE from 'https://cdn.skypack.dev/three@0.129.0/build/three.module
 import {
     GLTFLoader
 } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js';
-import * as dat from '../../node_modules/lil-gui/dist/lil-gui.esm.js';
 
 export function renderMap() {
 
@@ -10,8 +9,7 @@ export function renderMap() {
     console.log(button);
 
     const canvas = document.querySelector('canvas.webgl')
-
-    const gui = new dat.GUI()
+    console.log(canvas);
 
     // Sizes
     const sizes = {
@@ -29,7 +27,7 @@ export function renderMap() {
     const textureLoader = new THREE.TextureLoader()
 
     // Fog
-    const fog = new THREE.Fog('#111111', 1, 13)
+    const fog = new THREE.Fog('#111111', 1, 14)
     scene.fog = fog
 
 
@@ -166,10 +164,6 @@ export function renderMap() {
     })
 
 
-    // GUI
-    gui.add(camera.position, 'x', -20, 20, 0.1);
-    gui.add(camera.position, 'y', -20, 20, 0.1);
-    gui.add(camera.position, 'z', -20, 20, 0.1);
     scene.add(camera)
 
 
