@@ -8,7 +8,7 @@ const fetchData = () =>
     body: JSON.stringify({
       query: `
         query {
-          launches(limit: 10){
+          launches(limit: 100){
             details
             launch_date_utc
             launch_year
