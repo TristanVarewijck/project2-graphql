@@ -50,7 +50,7 @@ export function renderMap() {
 
     });
 
-    loader.load('../../assets/test.gltf', function (gltf) {
+    loader.load('../../assets/rocket-spacex.gltf', function (gltf) {
         rocket = gltf.scene
         const launchSite01 = [4.3, 1.4, 3.2]
         const launchSite02 = [4, 1.4, 2.8]
