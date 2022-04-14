@@ -2,7 +2,6 @@ import * as THREE from 'https://cdn.skypack.dev/three@0.129.0/build/three.module
 import {
     GLTFLoader
 } from 'https://cdn.skypack.dev/three@0.129.0/examples/jsm/loaders/GLTFLoader.js';
-import * as dat from '../../node_modules/lil-gui/dist/lil-gui.esm.js';
 
 export function renderMap() {
 
@@ -11,7 +10,6 @@ export function renderMap() {
 
     const canvas = document.querySelector('canvas.webgl')
 
-    const gui = new dat.GUI()
 
     // Sizes
     const sizes = {
@@ -52,7 +50,7 @@ export function renderMap() {
 
     });
 
-    loader.load('../../assets/test.gltf', function (gltf) {
+    loader.load('../../assets/rocket-spacex.gltf', function (gltf) {
         rocket = gltf.scene
         const launchSite01 = [4.3, 1.4, 3.2]
         const launchSite02 = [4, 1.4, 2.8]
@@ -63,7 +61,7 @@ export function renderMap() {
 
 
 
-        rocket.rotation.y = Math.PI / 1.2
+        rocket.rotation.y = Math.PI / 1.1
         rocket.traverse(n => {
             if (n.isMesh) {
                 n.castShadow = true
@@ -82,6 +80,12 @@ export function renderMap() {
                 y: 8,
                 duration: 1.75
             })
+            // let failTl = gsap.timeline();
+            //     failTl.to(rocket.rotation, {
+            //     x: Math.PI / 2,
+            //     duration: 0.5
+            // })
+
         })
 
         scene.add(rocket);
@@ -166,24 +170,47 @@ export function renderMap() {
     })
 
 
-    // GUI
-    gui.add(camera.position, 'x', -20, 20, 0.1);
-    gui.add(camera.position, 'y', -20, 20, 0.1);
-    gui.add(camera.position, 'z', -20, 20, 0.1);
-    scene.add(camera)
-
 
     // Lighting
     const hemisphereLight = new THREE.HemisphereLight(0xb1d9ff, 0x080820, 1);
     scene.add(hemisphereLight);
 
-    const light = new THREE.SpotLight(0xffffff, 4);
-    light.position.set(5, 50, 10);
-    light.castShadow = true;
-    light.shadow.bias = -0.0001
-    light.shadow.mapSize.width = 1024 * 4
-    light.shadow.mapSize.height = 1024 * 4
-    scene.add(light);
+    const lightFlorida01 = new THREE.SpotLight(0xffffff, 10);
+    lightFlorida01.position.set(10, 0, 2.2);
+    lightFlorida01.target = cylinderFlorida;
+    lightFlorida01.shadow.bias = -0.0001
+    lightFlorida01.shadow.mapSize.width = 1024 * 4
+    lightFlorida01.shadow.mapSize.height = 1024 * 4
+    scene.add(lightFlorida01);
+
+    const lightFlorida02 = new THREE.SpotLight(0xffffff, 10);
+    lightFlorida02.position.set(3, 0, 6);
+    lightFlorida02.target = cylinderFlorida;
+    lightFlorida02.castShadow = true;
+    lightFlorida02.shadow.bias = -0.0001
+    lightFlorida02.shadow.mapSize.width = 1024 * 4
+    lightFlorida02.shadow.mapSize.height = 1024 * 4
+    scene.add(lightFlorida02);
+
+
+
+    const lightCalifornia01 = new THREE.SpotLight(0xffffff, 10);
+    lightCalifornia01.position.set(-6, 0, 2.2);
+    lightCalifornia01.target = cylinderCalifornia;
+    lightCalifornia01.shadow.bias = -0.0001
+    lightCalifornia01.shadow.mapSize.width = 1024 * 4
+    lightCalifornia01.shadow.mapSize.height = 1024 * 4
+    scene.add(lightCalifornia01);
+
+
+    const lightCalifornia02 = new THREE.SpotLight(0xffffff, 10);
+    lightCalifornia02.position.set(-1, 0, 6);
+    lightCalifornia02.target = cylinderCalifornia;
+    lightCalifornia02.castShadow = true;
+    lightCalifornia02.shadow.bias = -0.0001
+    lightCalifornia02.shadow.mapSize.width = 1024 * 4
+    lightCalifornia02.shadow.mapSize.height = 1024 * 4
+    scene.add(lightCalifornia02);
 
     // Renderer
     const renderer = new THREE.WebGLRenderer({
@@ -213,11 +240,6 @@ export function renderMap() {
         camera.position.x = cursor.x
         camera.position.y = cursor.y + 6
         renderer.render(scene, camera)
-        light.position.set(
-            camera.position.x + 10,
-            camera.position.y + 10,
-            camera.position.z + 10
-        )
         // Call tick again on the next frame
         window.requestAnimationFrame(tick)
     }
