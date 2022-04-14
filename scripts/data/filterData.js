@@ -30,21 +30,21 @@ const filterData = (items) => {
 
         if (filteredItems.length == 0) {
             console.log("no data")
-            
-                const launchesContents = `
+
+            const launchesContents = `
                 <article>
                 <p class="empty">There were no launches in this year.</p>
                 </article>
                 `;
-                
-                const launchContainer = document.createElement("li");
-                launchContainer.innerHTML = launchesContents;
-                launchesSection.appendChild(launchContainer);
-            
+
+            const launchContainer = document.createElement("li");
+            launchContainer.innerHTML = launchesContents;
+            launchesSection.appendChild(launchContainer);
+
 
         } else {
-            console.log("yes")
             filteredItems.forEach((item) => {
+
                 const launchesContents = `
       <article>
       <small>${item.launch_date_utc}</small>
@@ -54,6 +54,7 @@ const filterData = (items) => {
       <p>${item.details}</p>
       </article>
   `;
+
                 const launchContainer = document.createElement("li");
                 launchContainer.innerHTML = launchesContents;
                 launchesSection.appendChild(launchContainer);
@@ -64,9 +65,6 @@ const filterData = (items) => {
 
     };
 };
-
-
-
 export {
-    filterData
+    filterData,
 };

@@ -4,7 +4,6 @@ const buttonIcon = document.getElementById("buttonIcon");
 // toggle between 2 classes
 popUpToggler.addEventListener("click", () => {
     popUp.classList.toggle("hidePopUp");
-    buttonIcon.classList.toggle("closed");
 });
 
 export {
@@ -33,7 +32,7 @@ for (let i = 0; i < timeLimeBtns.length; i++) {
         var label = document.querySelector(".poep");
         if (typeof (label) != 'undefined' && label != null) {
             document.querySelector("label").remove();
-        } 
+        }
 
         const para = document.createElement("label");
         para.className = "poep";
